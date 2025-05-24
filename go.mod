@@ -1,4 +1,4 @@
-module github.com/onchainterminal/zipkin-go
+module github.com/openzipkin/zipkin-go
 
 go 1.20
 
