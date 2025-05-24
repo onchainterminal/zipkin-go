@@ -28,6 +28,7 @@ type spanImpl struct {
 	tracer        *Tracer
 	mustCollect   int32 // used as atomic bool (1 = true, 0 = false)
 	flushOnFinish bool
+	customTraceID *model.TraceID
 }
 
 func (s *spanImpl) Context() model.SpanContext {

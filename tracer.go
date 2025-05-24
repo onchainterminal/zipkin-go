@@ -122,7 +122,11 @@ func (t *Tracer) StartSpan(name string, options ...SpanOption) Span {
 
 	if s.TraceID.Empty() {
 		// create root span
-		s.SpanContext.TraceID = t.generate.TraceID()
+		if s.customTraceID != nil {
+			s.SpanContext.TraceID = *s.customTraceID
+		} else {
+			s.SpanContext.TraceID = t.generate.TraceID()
+		}
 		s.SpanContext.ID = t.generate.SpanID(s.SpanContext.TraceID)
 	} else {
 		// valid parent context found

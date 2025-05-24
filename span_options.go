@@ -86,3 +86,10 @@ func FlushOnFinish(b bool) SpanOption {
 		s.flushOnFinish = b
 	}
 }
+
+// CustomTraceID allows to set custom trace ID to the Span
+func CustomTraceID(traceID model.TraceID) SpanOption {
+	return func(_ *Tracer, s *spanImpl) {
+		s.customTraceID = &traceID
+	}
+}
