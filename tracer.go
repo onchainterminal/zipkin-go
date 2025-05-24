@@ -124,6 +124,7 @@ func (t *Tracer) StartSpan(name string, options ...SpanOption) Span {
 		// create root span
 		if s.customTraceID != nil {
 			s.SpanContext.TraceID = *s.customTraceID
+			s.SpanContext.ID = t.generate.SpanID(model.TraceID{})
 		} else {
 			s.SpanContext.TraceID = t.generate.TraceID()
 		}
